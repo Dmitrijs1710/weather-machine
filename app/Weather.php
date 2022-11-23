@@ -9,8 +9,8 @@ class Weather
     private Weather\Temperature $temperature;
 
     public function __construct(
-        array $descriptions,
-        Weather\Wind $wind,
+        array               $descriptions,
+        Weather\Wind        $wind,
         Weather\Temperature $temperature
     )
     {
@@ -18,10 +18,11 @@ class Weather
         $this->wind = $wind;
         $this->temperature = $temperature;
     }
+
     public function __toString()
     {
         return (
-            "descriptions-> [". implode("], [",$this->descriptions)."]\n" .
+            "descriptions-> [" . implode("], [", $this->descriptions) . "]\n" .
             "temperature-> $this->temperature\n" .
             "wind-> $this->wind\n"
         );

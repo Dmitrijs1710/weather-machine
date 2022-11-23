@@ -7,13 +7,15 @@ class City
     private string $name;
     private Weather $weather;
     private Coordinates $coordinate;
+    private string $country;
 
-    public function __construct(string $name, Coordinates $coordinate, Weather $weather)
+    public function __construct(string $name, Coordinates $coordinate, Weather $weather, string $country)
     {
 
         $this->name = $name;
         $this->weather = $weather;
         $this->coordinate = $coordinate;
+        $this->country = $country;
     }
 
     public function __toString()
@@ -38,5 +40,13 @@ class City
     public function getWeather(): Weather
     {
         return $this->weather;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCountry(): string
+    {
+        return $this->country;
     }
 }

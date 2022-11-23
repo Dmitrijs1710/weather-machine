@@ -16,7 +16,7 @@ class Coordinates
     public function __toString()
     {
         return (
-            "lat: $this->lat, lon: $this->lon"
+        "lat: $this->lat, lon: $this->lon"
         );
     }
 

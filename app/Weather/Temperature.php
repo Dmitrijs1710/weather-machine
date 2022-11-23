@@ -17,8 +17,8 @@ class Temperature
         float $feelsLike,
         float $tempMin,
         float $tempMax,
-        int $pressure,
-        int $humidity
+        int   $pressure,
+        int   $humidity
     )
     {
         $this->temperature = $temperature;

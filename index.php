@@ -21,6 +21,11 @@ $apiByCityUrl = "https://api.openweathermap.org/data/2.5/weather?q=$cityName&app
 
 // Read JSON file
 $jsonData = file_get_contents($apiByCityUrl);
+
+if ($jsonData === false){
+    $jsonData = file_get_contents("https://api.openweathermap.org/data/2.5/weather?q=Riga&appid=$apiKey&units=metric");
+}
+
 // Decode JSON data into PHP array
 $responseData = json_decode($jsonData);
 $descriptions = [];
@@ -112,7 +117,7 @@ $city = new City(
                             gPa
                         </div>
                         <div class="wind">
-                            Wind : <?php echo $city->getWeather()->getWind()->getSpeed() ?> km/h
+                            Wind : <?php echo $city->getWeather()->getWind()->getSpeed() ?> m/s
                             <img class="wind-arrow-img"
                                  style="rotate: <?php echo $city->getWeather()->getWind()->getDegree() ?>"
                                  src="./assets/img/wind-arrow.png" alt="wind arrow">

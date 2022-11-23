@@ -205,3 +205,8 @@ main {
     color: black;
 }
 
+.incorrect-input{
+    text-align: center;
+    margin:10px;
+}
+

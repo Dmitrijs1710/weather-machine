@@ -22,40 +22,40 @@ $apiByCityUrl = "https://api.openweathermap.org/data/2.5/weather?q=$cityName&app
 // Read JSON file
 $jsonData = file_get_contents($apiByCityUrl);
 
-if ($jsonData === false){
-    $jsonData = file_get_contents("https://api.openweathermap.org/data/2.5/weather?q=Riga&appid=$apiKey&units=metric");
-}
+if ($jsonData !== false){
+    // Decode JSON data into PHP array
+    $responseData = json_decode($jsonData);
+    $descriptions = [];
+    foreach ($responseData->weather as $weather) {
+        $descriptions[] = new Description($weather->main, $weather->description, $weather->id, $weather->icon);
+    }
 
-// Decode JSON data into PHP array
-$responseData = json_decode($jsonData);
-$descriptions = [];
-foreach ($responseData->weather as $weather) {
-    $descriptions[] = new Description($weather->main, $weather->description, $weather->id, $weather->icon);
-}
-
-$city = new City(
-    $responseData->name,
-    new Coordinates(
-        $responseData->coord->lat,
-        $responseData->coord->lon
-    ),
-    new Weather(
-        $descriptions,
-        new Wind(
-            $responseData->wind->speed,
-            $responseData->wind->deg
+    $city = new City(
+        $responseData->name,
+        new Coordinates(
+            $responseData->coord->lat,
+            $responseData->coord->lon
         ),
-        new Temperature(
-            $responseData->main->temp,
-            $responseData->main->feels_like,
-            $responseData->main->temp_min,
-            $responseData->main->temp_max,
-            $responseData->main->pressure,
-            $responseData->main->humidity,
-        )
-    ),
-    $responseData->sys->country
-);
+        new Weather(
+            $descriptions,
+            new Wind(
+                $responseData->wind->speed,
+                $responseData->wind->deg
+            ),
+            new Temperature(
+                $responseData->main->temp,
+                $responseData->main->feels_like,
+                $responseData->main->temp_min,
+                $responseData->main->temp_max,
+                $responseData->main->pressure,
+                $responseData->main->humidity,
+            )
+        ),
+        $responseData->sys->country
+    );
+}
+
+
 
 ?>
 <!doctype html>
@@ -86,7 +86,7 @@ $city = new City(
         </div>
     </nav>
     <main>
-        <?php if (!empty($city)) { ?>
+        <?php if ($jsonData !==false) { ?>
             <div class="main-content">
                 <div class="weather-content">
                     <div class="weather">
@@ -129,20 +129,20 @@ $city = new City(
                     <div class="city-main"><?php echo $city->getWeather()->getDescriptions()[0]->getMain() ?></div>
                 </div>
             </div>
-            <form id="city-input-form">
-                <label class='label' for='city'>Enter a city: </label>
-                <br>
-                <input class="input" type='text' id="city" name='city'>
-                <br>
-                <input class="input-button" type='submit' value='Submit'>
-            </form>
+
 
 
         <?php } else { ?>
-            <br>
-            <div>Incorrect city input</div>
-        <?php } ?>
 
+            <div class="incorrect-input">Incorrect city input</div>
+        <?php } ?>
+        <form id="city-input-form">
+            <label class='label' for='city'>Enter a city: </label>
+            <br>
+            <input class="input" type='text' id="city" name='city'>
+            <br>
+            <input class="input-button" type='submit' value='Submit'>
+        </form>
     </main>
     <footer id="footer">
         2022 by Dmitrijs Fofanovs ©

@@ -146,8 +146,13 @@ main {
     max-width: 25px;
     max-height: 25px;
     background: transparent;
+    position: absolute;
+
 }
 
+.wind{
+    margin-top: 10px;
+}
 .additional-content {
     color: grey;
     font-size: 12px;
@@ -209,4 +214,5 @@ main {
     text-align: center;
     margin:10px;
 }
+
 

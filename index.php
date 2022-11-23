@@ -119,7 +119,7 @@ if ($jsonData !== false){
                         <div class="wind">
                             Wind : <?php echo $city->getWeather()->getWind()->getSpeed() ?> m/s
                             <img class="wind-arrow-img"
-                                 style="rotate: <?php echo $city->getWeather()->getWind()->getDegree() ?>"
+                                 style="rotate: <?php echo $city->getWeather()->getWind()->getDegree()+270 ?>deg"
                                  src="./assets/img/wind-arrow.png" alt="wind arrow">
                         </div>
                     </div>

@@ -6,6 +6,7 @@
   },
   "require": {
     "ext-json": "*",
-    "ext-readline": "*"
+    "ext-readline": "*",
+    "nikic/fast-route": "^1.3"
   }
 }

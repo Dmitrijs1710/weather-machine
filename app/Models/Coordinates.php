@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 class Coordinates
 {
@@ -20,17 +20,12 @@ class Coordinates
         );
     }
 
-    /**
-     * @return float
-     */
     public function getLon(): float
     {
         return $this->lon;
     }
 
-    /**
-     * @return float
-     */
+
     public function getLat(): float
     {
         return $this->lat;

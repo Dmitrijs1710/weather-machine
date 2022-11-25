@@ -1,6 +1,12 @@
+body{
+    background-color: lavender;
+}
 .wrapper {
     display: flex;
     flex-direction: column;
+    background-color: lightgray;
+    border-radius: 20px;
+    box-shadow: 2px 2px 5px;
 }
 
 nav {
@@ -8,15 +14,26 @@ nav {
     border-width: 1px;
     border-color: black;
     border-radius: 20px;
+    box-shadow: 2px 2px 5px;
     display: flex;
     justify-content: space-evenly;
-    padding: 20px;
-    margin-bottom: 20px;
+    padding: 15px;
+    margin: 2%;
+
 }
 
 nav a {
-    font-size: 16px;
+    font-size: 20px;
+    color: black;
+    font-weight: bold;
     text-decoration: none;
+}
+
+.nav-content {
+    padding-left: 20px;
+    padding-right: 20px;
+    border-left: black solid 1px;
+    border-right: black solid 1px;
 }
 
 nav a:hover {
@@ -33,10 +50,7 @@ nav a:hover {
     max-height: 300px;
 }
 
-.nav-content {
-    padding-left: 20px;
-    padding-right: 20px;
-}
+
 
 main {
     display: flex;
@@ -53,6 +67,8 @@ main {
     border-color: black;
     border-radius: 25px;
     padding: 25px;
+    background-color: white;
+    box-shadow: 2px 2px 5px;
 }
 
 #city-input-form {
@@ -143,11 +159,11 @@ main {
 }
 
 .wind-arrow-img {
-    max-width: 25px;
-    max-height: 25px;
-    background: transparent;
+    max-width: 20px;
+    max-height: 20px;
+    margin-left: 10px;
+    margin-top: -5px;
     position: absolute;
-
 }
 
 .wind{
@@ -192,10 +208,10 @@ main {
     background-color: inherit;
     color: grey;
     width: fit-content;
-    border: none black;
-    border-left: 1px solid;
     padding: 3px;
     font-size: 18px;
+    border: none black;
+    border-left: 1px solid;
 }
 
 #fahrenheit-button:hover {

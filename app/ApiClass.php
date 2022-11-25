@@ -10,11 +10,16 @@ use App\Models\Weather\Temperature;
 use App\Models\Weather\Wind;
 
 class ApiClass{
+    private string $apiKey;
+    public function __construct()
+    {
+
+        $this->apiKey=$_ENV['API_KEY'];
+    }
 
     public function getCityData(string $cityName) :?City
     {
-        $apiKey = $_ENV['API_KEY'];
-        $apiByCityUrl = "https://api.openweathermap.org/data/2.5/weather?q=$cityName&appid=$apiKey&units=metric";
+        $apiByCityUrl = "https://api.openweathermap.org/data/2.5/weather?q=$cityName&appid=$this->apiKey&units=metric";
 
 // Read JSON file
         $jsonData = file_get_contents($apiByCityUrl);

@@ -38,7 +38,7 @@ use App\Models\City;
         </nav>
         <main>
             <?php
-            if ($jsonData !== false) { ?>
+            if ($city !== null) { ?>
                 <div class="main-content">
                     <div class="weather-content">
                         <div class="weather">

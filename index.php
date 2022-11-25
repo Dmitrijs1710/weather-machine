@@ -2,6 +2,9 @@
 
 require_once 'vendor/autoload.php';
 
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+$dotenv->load();
+
 $dispatcher = FastRoute\simpleDispatcher(function (FastRoute\RouteCollector $r) {
     $r->addRoute('GET', '/', ["App\Controllers\CityController", "getCity"]);
     $r->addRoute('GET', '/?city={name}', ["App\Controllers\CityController", "getCity"]);
